@@ -1,5 +1,7 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
+require_once __DIR__ . '/seguranca.php';
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') { csrf_exigir(); }
+require_once __DIR__ . "/seguranca.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -26,7 +28,14 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
         <li><a href="rastreamento.php">Rastreamento</a></li>
         <li><a href="pod.php">POD (Comprovantes)</a></li>
         <li><a href="alertas.php">Alertas</a></li>
-        <li><a href="logout.php" style="color: #f87171;">Sair (<?= htmlspecialchars($_SESSION['usuario_nome'] ?? '') ?>)</a></li>
+        <li><a href="relatorios.php">Relatórios</a></li>
+        <?php if (($_SESSION['usuario_nivel'] ?? '') === 'administrador'): ?><li><a href="gerar_alertas.php">Gerar alertas</a></li><li><a href="backup.php">Backup</a></li><?php endif; ?>
+        <li>
+            <form method="POST" action="logout.php" class="form-logout">
+                <?= csrf_campo() ?>
+                <button type="submit" style="color: #f87171;">Sair (<?= htmlspecialchars($_SESSION['usuario_nome'] ?? '', ENT_QUOTES, 'UTF-8') ?>)</button>
+            </form>
+        </li>
     </ul>
     <?php endif; ?>
 </div>

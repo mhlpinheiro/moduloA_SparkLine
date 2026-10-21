@@ -1,0 +1,21 @@
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+chave_ia.php
+config.local.php
+
+# Dependências, logs e backups
+/vendor/
+/node_modules/
+backups/
+*.log
+*.sql.bak
+*.zip
+*.rar
+
+# Sistema operacional e editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

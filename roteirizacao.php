@@ -1,8 +1,10 @@
 <?php
-require_once "auth.php";
+require_once __DIR__ . '/seguranca.php';
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') { csrf_exigir(); }
+require_once __DIR__ . "/auth.php";
 verificar_autenticacao();
-require_once "conexao.php";
-require_once "ia_conexao.php";
+require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/ia_conexao.php";
 
 $mensagem = "";
 $rota_otimizada = null;
@@ -25,7 +27,7 @@ $pedidos_em_rota = $pdo->query("SELECT p.*, m.nome as motorista_nome, v.placa FR
 $veiculos = $pdo->query("SELECT * FROM veiculos WHERE status='disponivel'")->fetchAll();
 $motoristas = $pdo->query("SELECT * FROM motoristas WHERE status='disponivel'")->fetchAll();
 
-require_once "header.php";
+require_once __DIR__ . "/header.php";
 ?>
 <div class="container">
     <h2>Roteirização e Otimização de Rotas (IA & TSP) - RF05</h2>
@@ -35,6 +37,7 @@ require_once "header.php";
         <div class="card">
             <h3>Executar Roteirização Inteligente</h3>
             <form method="POST">
+                <?= csrf_campo() ?>
                 <input type="hidden" name="otimizar_rotas" value="1">
                 <div class="form-group"><label>Selecione o Veículo:</label>
                     <select name="veiculo_id" required>
@@ -86,4 +89,4 @@ require_once "header.php";
         </div>
     </div>
 </div>
-<?php require_once "footer.php"; ?>
+<?php require_once __DIR__ . "/footer.php"; ?>

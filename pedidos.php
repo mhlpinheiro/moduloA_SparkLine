@@ -1,7 +1,9 @@
 <?php
-require_once "auth.php";
+require_once __DIR__ . '/seguranca.php';
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') { csrf_exigir(); }
+require_once __DIR__ . "/auth.php";
 verificar_autenticacao();
-require_once "conexao.php";
+require_once __DIR__ . "/conexao.php";
 
 $mensagem = "";
 
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_manual'])) 
 }
 
 $pedidos = $pdo->query("SELECT * FROM entregas ORDER BY id DESC")->fetchAll();
-require_once "header.php";
+require_once __DIR__ . "/header.php";
 ?>
 <div class="container">
     <h2>Cadastro e Importação de Pedidos / Entregas - RF04</h2>
@@ -58,6 +60,7 @@ require_once "header.php";
         <div class="card">
             <h3>📂 Importar Lote (CSV)</h3>
             <form method="POST" enctype="multipart/form-data">
+                <?= csrf_campo() ?>
                 <div class="form-group">
                     <label>Selecione o arquivo CSV:</label>
                     <input type="file" name="arquivo_csv" accept=".csv" required>
@@ -70,6 +73,7 @@ require_once "header.php";
         <div class="card">
             <h3>📝 Novo Pedido Manual</h3>
             <form method="POST">
+                <?= csrf_campo() ?>
                 <input type="hidden" name="cadastrar_manual" value="1">
                 <div class="form-group"><label>Código Pedido:</label><input type="text" name="codigo_pedido" required placeholder="PED-1004"></div>
                 <div class="form-group"><label>Cliente:</label><input type="text" name="cliente_nome" required></div>
@@ -123,4 +127,4 @@ require_once "header.php";
         </div>
     </div>
 </div>
-<?php require_once "footer.php"; ?>
+<?php require_once __DIR__ . "/footer.php"; ?>

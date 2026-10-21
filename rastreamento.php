@@ -1,11 +1,11 @@
 <?php
-require_once "auth.php";
+require_once __DIR__ . "/auth.php";
 verificar_autenticacao();
-require_once "conexao.php";
+require_once __DIR__ . "/conexao.php";
 
 $entregas = $pdo->query("SELECT * FROM entregas WHERE status != 'pendente'")->fetchAll();
 
-require_once "header.php";
+require_once __DIR__ . "/header.php";
 ?>
 <div class="container">
     <h2>Rastreamento de Entregas em Tempo Real - RF06</h2>
@@ -35,4 +35,4 @@ require_once "header.php";
     });
     </script>
 </div>
-<?php require_once "footer.php"; ?>
+<?php require_once __DIR__ . "/footer.php"; ?>

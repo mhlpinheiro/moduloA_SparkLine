@@ -1,7 +1,7 @@
 <?php
 // Assistente de IA do SENN AI-X Helper (Hugging Face, endereço novo).
 // A chave e o modelo ficam em chave_ia.php, que NÃO vai para o GitHub.
-require_once "chave_ia.php";
+require_once __DIR__ . "/chave_ia.php";
  
 // Pergunta à IA. Se a IA falhar por qualquer motivo, responde em "modo offline" (RNF05).
 function perguntarIA($prompt) {

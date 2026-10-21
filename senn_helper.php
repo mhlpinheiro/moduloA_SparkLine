@@ -1,5 +1,5 @@
 <?php
-require_once "ia_conexao.php";
+require_once __DIR__ . "/ia_conexao.php";
 
 header('Content-Type: application/json');
 

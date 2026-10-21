@@ -1,7 +1,9 @@
 <?php
-require_once "auth.php";
+require_once __DIR__ . '/seguranca.php';
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') { csrf_exigir(); }
+require_once __DIR__ . "/auth.php";
 verificar_autenticacao();
-require_once "conexao.php";
+require_once __DIR__ . "/conexao.php";
 
 $mensagem = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_veiculo'])) {
@@ -21,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_veiculo']))
 }
 
 $veiculos = $pdo->query("SELECT * FROM veiculos ORDER BY id DESC")->fetchAll();
-require_once "header.php";
+require_once __DIR__ . "/header.php";
 ?>
 <div class="container">
     <h2>Gestão de Frota (Veículos) - RF02</h2>
@@ -32,6 +34,7 @@ require_once "header.php";
         <div class="card">
             <h3>Novo Veículo</h3>
             <form method="POST">
+                <?= csrf_campo() ?>
                 <input type="hidden" name="cadastrar_veiculo" value="1">
                 <div class="form-group"><label>Placa:</label><input type="text" name="placa" required placeholder="ABC-1234"></div>
                 <div class="form-group"><label>Modelo:</label><input type="text" name="modelo" required placeholder="Mercedes Sprinter"></div>
@@ -86,4 +89,4 @@ require_once "header.php";
         </div>
     </div>
 </div>
-<?php require_once "footer.php"; ?>
+<?php require_once __DIR__ . "/footer.php"; ?>
