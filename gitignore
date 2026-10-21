@@ -1,0 +1,11 @@
+# Segredos: NUNCA enviar ao GitHub
+chave_ia.php
+
+# Arquivos do sistema operacional
+Thumbs.db
+.DS_Store
+
+# Backups e logs
+backups/
+*.log
+*.zip

@@ -1,0 +1,159 @@
+/* Importar fonte moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Estilos Globais */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    color: #0097B2; /* Cor principal do SENN AI-X */
+}
+
+/* Container principal para centralizar o conteúdo */
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Links e Botões */
+a {
+    color: #0097B2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #00768c;
+    text-decoration: underline;
+}
+
+button, .btn {
+    background-color: #0097B2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover, .btn:hover {
+    background-color: #00768c;
+    transform: translateY(-2px);
+}
+
+/* Tabelas (Para as listagens de ativos, manutenções, etc.) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #0097B2;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f1f9fa;
+}
+
+/* Formulários */
+form p {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0097B2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 151, 178, 0.3);
+}
+
+/* Menu do Painel (Lista de links) */
+ul.menu-painel {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+ul.menu-painel li {
+    background: #f8fcfc;
+    border: 1px solid #e0f2f4;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+ul.menu-painel li a {
+    display: block;
+    padding: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+ul.menu-painel li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 151, 178, 0.15);
+    border-color: #0097B2;
+}
+
+ul.menu-painel li:hover a {
+    color: #0097B2;
+}
+
+/* Mensagens de Sucesso/Erro */
+.alerta {
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
