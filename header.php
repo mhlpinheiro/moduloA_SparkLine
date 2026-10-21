@@ -1,41 +1,85 @@
+
 <?php
 require_once __DIR__ . '/seguranca.php';
-if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') { csrf_exigir(); }
-require_once __DIR__ . "/seguranca.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SENN AI-X - Gestão Logística Last-Mile</title>
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        defer
+    ></script>
 </head>
 <body>
-<div class="navbar">
-    <div class="brand">
-        🚚 SENN AI-X <span style="font-size: 0.8rem; color:#94a3b8;">Logistics</span>
-    </div>
+
+<header class="navbar">
+    <a href="dashboard.php" class="brand">
+        <span class="brand-icon">🚚</span>
+
+        <span class="brand-name">
+            SENN <strong>AI-X</strong>
+            <small>LOGISTICS INTELLIGENCE</small>
+        </span>
+    </a>
+
     <?php if (isset($_SESSION['usuario_id'])): ?>
-    <ul>
-        <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="frotas.php">Frota</a></li>
-        <li><a href="motoristas.php">Motoristas</a></li>
-        <li><a href="pedidos.php">Pedidos / CSV</a></li>
-        <li><a href="roteirizacao.php">Roteirização (IA)</a></li>
-        <li><a href="rastreamento.php">Rastreamento</a></li>
-        <li><a href="pod.php">POD (Comprovantes)</a></li>
-        <li><a href="alertas.php">Alertas</a></li>
-        <li><a href="relatorios.php">Relatórios</a></li>
-        <?php if (($_SESSION['usuario_nivel'] ?? '') === 'administrador'): ?><li><a href="gerar_alertas.php">Gerar alertas</a></li><li><a href="backup.php">Backup</a></li><?php endif; ?>
-        <li>
-            <form method="POST" action="logout.php" class="form-logout">
+
+        <nav class="nav-menu" aria-label="Menu principal">
+            <a href="dashboard.php">Dashboard</a>
+            <a href="frotas.php">Frota</a>
+            <a href="motoristas.php">Motoristas</a>
+            <a href="pedidos.php">Pedidos / CSV</a>
+            <a href="roteirizacao.php">Roteirização IA</a>
+            <a href="rastreamento.php">Rastreamento</a>
+            <a href="pod.php">Comprovantes</a>
+            <a href="alertas.php">Alertas</a>
+            <a href="relatorios.php">Relatórios</a>
+
+            <?php if (
+                ($_SESSION['usuario_nivel'] ?? '') === 'administrador'
+            ): ?>
+                <a href="gerar_alertas.php">Gerar alertas</a>
+                <a href="backup.php">Backup</a>
+            <?php endif; ?>
+        </nav>
+
+        <div class="nav-user">
+            <span class="user-status" aria-hidden="true"></span>
+
+            <span class="user-name">
+                <?= htmlspecialchars(
+                    $_SESSION['usuario_nome'] ?? '',
+                    ENT_QUOTES,
+                    'UTF-8'
+                ) ?>
+            </span>
+
+            <form
+                method="POST"
+                action="logout.php"
+                class="form-logout"
+            >
                 <?= csrf_campo() ?>
-                <button type="submit" style="color: #f87171;">Sair (<?= htmlspecialchars($_SESSION['usuario_nome'] ?? '', ENT_QUOTES, 'UTF-8') ?>)</button>
+
+                <button type="submit" class="btn-logout">
+                    Sair
+                </button>
             </form>
-        </li>
-    </ul>
+        </div>
+
     <?php endif; ?>
-</div>
+</header>
+</body>
+</html>

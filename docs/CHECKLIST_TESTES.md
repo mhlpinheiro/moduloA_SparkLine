@@ -5,7 +5,7 @@
 - [ ] Confirmar Apache/MySQL ativos no XAMPP.
 - [ ] Confirmar `pdo_mysql` habilitado.
 - [ ] Confirmar que `conexao.php` aponta para `senn_logistica_db`.
-- [ ] Não executar `database.sql` sobre banco com dados importantes (o script recria o banco).
+- [ ] Não executar `database/database.sql` sobre banco com dados importantes (o script recria o banco).
 
 ## Autenticação e segurança
 - [ ] Entrar com conta válida e verificar redirecionamento ao painel.

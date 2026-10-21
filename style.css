@@ -1309,3 +1309,184 @@ body:has(main.gerar-alertas-page) main.gerar-alertas-page table {
     }
 }
 
+
+/* ===== HEADER SENN AI-X ===== */
+
+.navbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 16px 24px;
+    background: #0f172a;
+    border-bottom: 1px solid #263449;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+    position: relative;
+    z-index: 1000;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+.brand-icon {
+    font-size: 30px;
+}
+
+.brand-name {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.brand-name strong {
+    display: inline;
+    color: #38bdf8;
+}
+
+.brand-name small {
+    margin-top: 4px;
+    color: #94a3b8;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-width: 0;
+}
+
+.nav-menu a {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 10px;
+    border-radius: 7px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+    background: #1e293b;
+    color: #38bdf8;
+    outline: none;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-left: auto;
+}
+
+.user-status {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #22c55e;
+}
+
+.user-name {
+    max-width: 150px;
+    overflow: hidden;
+    color: #cbd5e1;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-logout {
+    margin: 0;
+}
+
+.btn-logout {
+    padding: 8px 13px;
+    border: 1px solid #7f1d1d;
+    border-radius: 7px;
+    background: transparent;
+    color: #fca5a5;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: #7f1d1d;
+    color: #fff;
+}
+
+/* ===== TABLETS E CELULARES ===== */
+
+@media (max-width: 900px) {
+    .navbar {
+        gap: 14px;
+        padding: 14px 16px;
+    }
+
+    .nav-menu {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .nav-user {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .brand-icon {
+        font-size: 25px;
+    }
+
+    .brand-name {
+        font-size: 17px;
+    }
+
+    .brand-name small {
+        font-size: 8px;
+    }
+
+    .nav-user {
+        gap: 6px;
+    }
+
+    .user-name {
+        max-width: 90px;
+    }
+
+    .nav-menu {
+        gap: 4px;
+    }
+
+    .nav-menu a {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+

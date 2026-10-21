@@ -14,7 +14,7 @@ Aplicação PHP + MySQL para gestão de operações logísticas, desenvolvida pa
 2. Extraia `moduloA_SENN_AI_X` para `C:\xampp\htdocs\moduloA_SENN_AI_X`.
 3. Inicie Apache e MySQL no painel do XAMPP.
 4. Abra `http://localhost/phpmyadmin`.
-5. Se o banco `senn_logistica_db` ainda não existir, importe `database.sql`. **O script SQL contém DROP DATABASE e apaga o banco existente. Nunca o reimporte sobre dados reais sem backup.**
+5. Se o banco `senn_logistica_db` ainda não existir, importe `database/database.sql`. **O script SQL contém DROP DATABASE e apaga o banco existente. Nunca o reimporte sobre dados reais sem backup.**
 6. Confira usuário, senha e banco em `conexao.php`.
 7. Abra `http://localhost/moduloA_SENN_AI_X/login.php`.
 8. O SQL de demonstração inclui contas de teste. Se você quiser começar sem os dados de demonstração, use um banco vazio e crie o primeiro administrador pela tela de cadastro.
@@ -39,7 +39,7 @@ O script SQL informa que as contas de teste usam a senha `password`. Altere/remo
 
 ## Teste rápido
 
-1. Execute `php -l nome_do_arquivo.php` nos arquivos PHP ou use o checklist em `CHECKLIST_TESTES.md`.
+1. Execute `php -l nome_do_arquivo.php` nos arquivos PHP ou use o checklist em `docs/CHECKLIST_TESTES.md`.
 2. Confirme login, logout e permissões por perfil.
 3. Cadastre um veículo, motorista e entrega de teste.
 4. Teste importação CSV com uma cópia de arquivo de exemplo.
